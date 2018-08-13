@@ -1,6 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import { PrivateRoute } from '../common/PrivateRoute/';
+import { AnonymousRoute } from '../common/AnonymousRoute/';
 import { Auth } from './Auth/';
 import { Main } from './Main/';
 
@@ -9,8 +10,11 @@ export class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <Route component={Auth} path="/auth" />
-          <PrivateRoute component={Main} path="/" />
+          <Switch>
+            <AnonymousRoute component={Auth} path="/auth" />
+            <PrivateRoute component={Main} path="/app" />
+            <Redirect to="/app" />
+          </Switch>
         </div>
       </Router>
     );

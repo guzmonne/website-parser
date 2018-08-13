@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 import { Input } from '../../../common/Input/';
 import { ButtonLoading as Button } from '../../../common/Button/';
 
-export var Login = ({
+export var Confirm = ({
   formState,
   handleChange,
   handleSubmit,
   loading,
   setLoading
 }) => (
-  <div className="Login">
-    <form className="Login__form" onSubmit={handleSubmit}>
-      <legend onClick={setLoading}>Log in</legend>
+  <div className="Confirm">
+    <form className="Confirm__form" onSubmit={handleSubmit}>
+      <legend onClick={setLoading}>Confirm</legend>
       <label>Username</label>
       <Input
         placeholder="Username"
@@ -20,17 +20,17 @@ export var Login = ({
         onChange={handleChange('username')}
         type="text"
       />
-      <label>Password</label>
+      <label>Code</label>
       <Input
-        placeholder="Password"
+        placeholder="Code"
         value={formState.password}
-        onChange={handleChange('password')}
-        type="password"
+        onChange={handleChange('code')}
+        type="text"
       />
       <Button loading={loading} type="submit">
-        Log in
+        Confirm account
       </Button>
-      <Link to="/auth/signup">Signup</Link>
+      <Link to="/auth">Log in</Link>
     </form>
   </div>
 );

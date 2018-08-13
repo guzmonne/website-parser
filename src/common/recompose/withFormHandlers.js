@@ -15,9 +15,9 @@ export default function withFormHandlers(initialState, onSubmit) {
     withHandlers({
       handleChange: ({ setFormState }) => key => e =>
         setFormState(key, e.target.value),
-      handleSubmit: ({ formState }) => e => {
+      handleSubmit: ({ formState, ...props }) => e => {
         e.preventDefault();
-        onSubmit(formState);
+        onSubmit(formState, props);
       }
     })
   );

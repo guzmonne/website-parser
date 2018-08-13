@@ -7,6 +7,13 @@ export var Signup = ({ formState, handleChange, handleSubmit, loading }) => (
   <div className="Signup">
     <form className="Signup__form" onSubmit={handleSubmit}>
       <legend>Signup</legend>
+      <label>Username</label>
+      <Input
+        placeholder="Username"
+        value={formState.username}
+        onChange={handleChange('username')}
+        type="text"
+      />
       <label>Email</label>
       <Input
         placeholder="Email"
@@ -15,7 +22,6 @@ export var Signup = ({ formState, handleChange, handleSubmit, loading }) => (
         type="email"
       />
       <label>Password</label>
-
       <Input
         placeholder="Password"
         value={formState.password}
@@ -23,7 +29,6 @@ export var Signup = ({ formState, handleChange, handleSubmit, loading }) => (
         type="password"
       />
       <label>Repeat Password</label>
-
       <Input
         placeholder="Repeat password"
         value={formState.repeatPassword}

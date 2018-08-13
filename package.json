@@ -17,8 +17,7 @@
     "serverless-plugin-typescript": "^1.1.5"
   },
   "scripts": {
-    "user_pool_id": "aws secretsmanager get-secret-value --secret-id website-parser__user-pool-id --profile gmonne | jq -r .SecretString",
-    "start": "REACT_USER_POOL_ID=$(yarn user_pool_id) react-scripts start",
+    "start": "source ./scripts/exports.sh && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
