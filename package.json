@@ -1,0 +1,23 @@
+{
+  "name": "website-parser",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "1.1.4"
+  },
+  "dependencies": {
+    "aws-amplify": "^1.0.5",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "serverless": "^1.30.0",
+    "serverless-express": "^2.0.7",
+    "serverless-plugin-typescript": "^1.1.5"
+  },
+  "scripts": {
+    "user_pool_id": "aws secretsmanager get-secret-value --secret-id website-parser__user-pool-id --profile gmonne | jq -r .SecretString",
+    "start": "REACT_USER_POOL_ID=$(yarn user_pool_id) react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
