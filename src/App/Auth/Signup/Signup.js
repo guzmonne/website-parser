@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Input } from '../../../common/Input/';
-import { Button } from '../../../common/Button/';
+import { ButtonLoading as Button } from '../../../common/Button/';
 
-export var Signup = ({ formState, handleChange, handleSubmit }) => (
+export var Signup = ({ formState, handleChange, handleSubmit, loading }) => (
   <div className="Signup">
     <form className="Signup__form" onSubmit={handleSubmit}>
       <legend>Signup</legend>
@@ -30,7 +30,9 @@ export var Signup = ({ formState, handleChange, handleSubmit }) => (
         onChange={handleChange('repeatPassword')}
         type="password"
       />
-      <Button type="submit">Signup</Button>
+      <Button type="submit" loading={loading}>
+        Signup
+      </Button>
       <Link to="/auth">Log in</Link>
     </form>
   </div>
