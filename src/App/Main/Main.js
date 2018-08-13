@@ -1,7 +1,10 @@
 import React from 'react';
+import { Body } from './Body/';
+import { Toolbar } from './Toolbar/';
 
 export var Main = () => (
   <div className="Main">
-    <h1>Main</h1>
+    <Toolbar />
+    <Body />
   </div>
 );

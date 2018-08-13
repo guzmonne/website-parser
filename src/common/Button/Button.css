@@ -1,5 +1,5 @@
 .Button {
-  background: linear-gradient(90deg, #0069ff, #1633ff);
+  background: linear-gradient(90deg, var(--blue), var(--blue-dark));
   color: #fff;
   appearance: none;
   margin: 0;
@@ -27,7 +27,7 @@
 }
 
 .Button:hover:not(:disabled) {
-  background: linear-gradient(90deg, #0069ff, #0069ff);
+  background: linear-gradient(90deg, var(--blue), var(--blue));
 }
 
 .Button:disabled {

@@ -1,0 +1,16 @@
+.ButtonOutline {
+  color: var(--blue);
+  background: white;
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: var(--blue);
+  transition: all 0.5s;
+}
+
+.ButtonOutline:hover {
+  color: white;
+  background: var(--blue);
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: var(--blue-dark);
+}

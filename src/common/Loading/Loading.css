@@ -1,0 +1,45 @@
+.Loading {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --loading-loader-dimension: 20em;
+  --loading-loader-border-width: 1em;
+}
+
+.Loading .Spinner,
+.Loading .Spinner:before,
+.Loading .Spinner:after {
+  border-top-color: var(--blue);
+}
+
+.Loading .Spinner {
+  width: var(--loading-loader-dimension);
+  height: var(--loading-loader-dimension);
+  border-width: var(--loading-loader-border-width);
+  animation-duration: 1s;
+}
+
+.Loading .Spinner:before {
+  width: calc(
+    var(--loading-loader-dimension) - var(--loading-loader-border-width) * 2
+  );
+  height: calc(
+    var(--loading-loader-dimension) - var(--loading-loader-border-width) * 2
+  );
+  border-width: var(--loading-loader-border-width);
+  animation-duration: 0.75s;
+}
+
+.Loading .Spinner:after {
+  width: calc(
+    var(--loading-loader-dimension) - var(--loading-loader-border-width) * 4
+  );
+  height: calc(
+    var(--loading-loader-dimension) - var(--loading-loader-border-width) * 4
+  );
+  border-width: var(--loading-loader-border-width);
+  animation-duration: 0.5s;
+}

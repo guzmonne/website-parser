@@ -67,7 +67,7 @@ input:focus[type='url'],
 input:focus[type='week'],
 select:focus,
 textarea:focus {
-  border-color: #0069ff;
+  border-color: var(--blue);
   outline: 0;
   background: #fff;
   box-shadow: 0 0 2px rgba(17, 169, 94, 0.5);

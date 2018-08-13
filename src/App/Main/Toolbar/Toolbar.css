@@ -1,0 +1,10 @@
+.Toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Toolbar h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}

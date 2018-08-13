@@ -1,0 +1,12 @@
+.Alert {
+  color: white;
+  width: 100%;
+  text-align: center;
+  background-color: #a4a4a4;
+  padding: 1rem;
+  border-radius: 0.5em;
+}
+
+.Alert.Alert__danger {
+  background-color: #bb0a21;
+}

@@ -1,0 +1,20 @@
+.Main {
+  width: 60rem;
+  margin: 0 auto;
+}
+
+.Main .Toolbar,
+.Main .Body {
+  border-radius: 0.2rem;
+  background-color: white;
+  padding: 0.5rem;
+}
+
+.Main .Toolbar {
+  margin: 0.5rem 0;
+  height: 4rem;
+}
+
+.Main .Body {
+  min-height: calc(100vh - 6rem);
+}
