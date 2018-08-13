@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { Input } from '../../../common/Input/';
 import { Button } from '../../../common/Button/';
 
-export var Signup = ({ state, handleChange, handleSubmit }) => (
+export var Signup = ({ formState, handleChange, handleSubmit }) => (
   <div className="Signup">
     <form className="Signup__form" onSubmit={handleSubmit}>
       <legend>Signup</legend>
       <label>Email</label>
       <Input
         placeholder="Email"
-        value={state.email}
+        value={formState.email}
         onChange={handleChange('email')}
         type="email"
       />
@@ -18,7 +18,7 @@ export var Signup = ({ state, handleChange, handleSubmit }) => (
 
       <Input
         placeholder="Password"
-        value={state.password}
+        value={formState.password}
         onChange={handleChange('password')}
         type="password"
       />
@@ -26,7 +26,7 @@ export var Signup = ({ state, handleChange, handleSubmit }) => (
 
       <Input
         placeholder="Repeat password"
-        value={state.repeatPassword}
+        value={formState.repeatPassword}
         onChange={handleChange('repeatPassword')}
         type="password"
       />

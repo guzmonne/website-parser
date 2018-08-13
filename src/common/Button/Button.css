@@ -22,6 +22,14 @@
   white-space: nowrap;
 }
 
-.Button:hover {
+.Button:focus {
+  outline: none;
+}
+
+.Button:hover:not(:disabled) {
   background: linear-gradient(90deg, #0069ff, #0069ff);
+}
+
+.Button:disabled {
+  opacity: 0.8;
 }

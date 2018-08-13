@@ -4,19 +4,20 @@ import withHandlers from 'recompose/withHandlers';
 
 export default function withFormHandlers(initialState, onSubmit) {
   return compose(
-    withStateHandlers(() => ({ state: initialState }), {
-      setState: ({ state }) => (key, value) => ({
-        state: {
-          ...state,
+    withStateHandlers(() => ({ formState: initialState }), {
+      setFormState: ({ formState }) => (key, value) => ({
+        formState: {
+          ...formState,
           [key]: value
         }
       })
     }),
     withHandlers({
-      handleChange: ({ setState }) => key => e => setState(key, e.target.value),
-      handleSubmit: ({ state }) => e => {
+      handleChange: ({ setFormState }) => key => e =>
+        setFormState(key, e.target.value),
+      handleSubmit: ({ formState }) => e => {
         e.preventDefault();
-        onSubmit(state);
+        onSubmit(formState);
       }
     })
   );

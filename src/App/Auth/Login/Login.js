@@ -1,27 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Input } from '../../../common/Input/';
-import { Button } from '../../../common/Button/';
+import { ButtonLoading as Button } from '../../../common/Button/';
 
-export var Login = ({ state, handleChange, handleSubmit }) => (
+export var Login = ({
+  formState,
+  handleChange,
+  handleSubmit,
+  loading,
+  setLoading
+}) => (
   <div className="Login">
     <form className="Login__form" onSubmit={handleSubmit}>
-      <legend>Log in</legend>
+      <legend onClick={setLoading}>Log in</legend>
       <label>Email</label>
       <Input
         placeholder="Email"
-        value={state.email}
+        value={formState.email}
         onChange={handleChange('email')}
         type="email"
       />
       <label>Password</label>
       <Input
         placeholder="Password"
-        value={state.password}
+        value={formState.password}
         onChange={handleChange('password')}
         type="password"
       />
-      <Button type="submit">Log in</Button>
+      <Button loading={loading} type="submit">
+        Log in
+      </Button>
       <Link to="/auth/signup">Signup</Link>
     </form>
   </div>
