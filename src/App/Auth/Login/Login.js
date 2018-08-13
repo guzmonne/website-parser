@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Input } from '../../../common/Input/';
+import { Button } from '../../../common/Button/';
 
 export var Login = ({ state, handleChange, handleSubmit }) => (
   <div className="Login">
@@ -20,6 +21,7 @@ export var Login = ({ state, handleChange, handleSubmit }) => (
         onChange={handleChange('password')}
         type="password"
       />
+      <Button type="submit">Log in</Button>
       <Link to="/auth/signup">Signup</Link>
     </form>
   </div>

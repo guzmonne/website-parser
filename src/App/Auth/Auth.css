@@ -33,3 +33,7 @@
   margin-top: 0.5rem;
   text-decoration: none;
 }
+
+.Auth form button {
+  margin-top: 1rem;
+}

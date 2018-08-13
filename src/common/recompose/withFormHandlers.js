@@ -14,7 +14,10 @@ export default function withFormHandlers(initialState, onSubmit) {
     }),
     withHandlers({
       handleChange: ({ setState }) => key => e => setState(key, e.target.value),
-      handleSubmit: ({ state }) => () => onSubmit(state)
+      handleSubmit: ({ state }) => e => {
+        e.preventDefault();
+        onSubmit(state);
+      }
     })
   );
 }

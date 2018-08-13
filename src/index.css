@@ -2,6 +2,11 @@
   --blue: #0069ff;
 }
 
+html {
+  font-family: Sailec-Bold, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;

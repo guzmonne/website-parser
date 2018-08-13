@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Input } from '../../../common/Input/';
+import { Button } from '../../../common/Button/';
 
 export var Signup = ({ state, handleChange, handleSubmit }) => (
   <div className="Signup">
@@ -25,10 +26,11 @@ export var Signup = ({ state, handleChange, handleSubmit }) => (
 
       <Input
         placeholder="Repeat password"
-        value={state.password}
+        value={state.repeatPassword}
         onChange={handleChange('repeatPassword')}
         type="password"
       />
+      <Button type="submit">Signup</Button>
       <Link to="/auth">Log in</Link>
     </form>
   </div>
