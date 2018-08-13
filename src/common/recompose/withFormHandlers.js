@@ -1,6 +1,6 @@
-import compose from 'recompose/compose.js';
-import withStateHandlers from 'recompose/withStateHandlers.js';
-import withHandlers from 'recompose/withHandlers.js';
+import compose from 'recompose/compose';
+import withStateHandlers from 'recompose/withStateHandlers';
+import withHandlers from 'recompose/withHandlers';
 
 export default function withFormHandlers(initialState, onSubmit) {
   return compose(

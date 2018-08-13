@@ -1,3 +1,3 @@
 import './Login.css';
 
-export * from './EnhancedLogin.js';
+export * from './EnhancedLogin';

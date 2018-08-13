@@ -1,3 +1,3 @@
 import './Auth.css';
 
-export * from './Auth.js';
+export * from './Auth';

@@ -1,3 +1,3 @@
 import './App.css';
 
-export * from './App.js';
+export * from './App';

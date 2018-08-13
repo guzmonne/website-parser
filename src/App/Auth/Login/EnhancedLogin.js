@@ -1,4 +1,4 @@
-import compose from 'recompose/compose.js';
+import compose from 'recompose/compose';
 import withFormHandlers from '../../../common/recompose/withFormHandlers.js';
 import { Login as LoginComponent } from './Login.js';
 
