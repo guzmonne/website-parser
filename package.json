@@ -7,8 +7,11 @@
   },
   "dependencies": {
     "aws-amplify": "^1.0.5",
+    "classnames": "^2.2.6",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-router-dom": "^4.3.1",
+    "recompose": "^0.28.2",
     "serverless": "^1.30.0",
     "serverless-express": "^2.0.7",
     "serverless-plugin-typescript": "^1.1.5"

@@ -1,0 +1,76 @@
+input,
+select,
+textarea {
+  margin: 0;
+  border-radius: 0;
+  font: inherit;
+  font-size: 16px;
+  color: inherit;
+}
+
+input:not([type]),
+input[type='datetime'],
+input[type='email'],
+input[type='number'],
+input[type='password'],
+input[type='range'],
+input[type='search'],
+input[type='tel'],
+input[type='text'],
+input[type='url'] {
+  appearance: none;
+}
+
+input:not([type]),
+input[type='color'],
+input[type='date'],
+input[type='datetime-local'],
+input[type='datetime'],
+input[type='email'],
+input[type='month'],
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='tel'],
+input[type='text'],
+input[type='time'],
+input[type='url'],
+input[type='week'],
+select,
+textarea {
+  height: 48px;
+  max-width: 100%;
+  padding: 0 16px;
+  border: 1px solid #f1f1f1;
+  background: #fff;
+  color: rgba(3, 27, 78, 0.7);
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-radius: 5px;
+  width: 100%;
+  position: relative;
+}
+
+input:focus:not([type]),
+input:focus[type='color'],
+input:focus[type='date'],
+input:focus[type='datetime-local'],
+input:focus[type='datetime'],
+input:focus[type='email'],
+input:focus[type='month'],
+input:focus[type='number'],
+input:focus[type='password'],
+input:focus[type='search'],
+input:focus[type='tel'],
+input:focus[type='text'],
+input:focus[type='time'],
+input:focus[type='url'],
+input:focus[type='week'],
+select:focus,
+textarea:focus {
+  border-color: #0069ff;
+  outline: 0;
+  background: #fff;
+  box-shadow: 0 0 2px rgba(17, 169, 94, 0.5);
+  color: rgba(3, 27, 78, 0.7);
+  z-index: 1;
+}
