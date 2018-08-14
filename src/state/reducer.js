@@ -3,6 +3,7 @@ import {
   APP_LOAD_SUCCESS,
   CURRENT_USER_SUCCESS,
   LOADING,
+  HISTORY_PUSH_REQUEST,
   AWK_ERROR,
   LOGIN_SUCCESS,
   ERROR
@@ -47,6 +48,7 @@ var errors = (state = defaultState.errors, action) => {
 var ui = (state = defaultState.ui, action) => {
   switch (action.type) {
     case LOADING:
+    case HISTORY_PUSH_REQUEST:
       return {
         ...state,
         loading: !state.loading

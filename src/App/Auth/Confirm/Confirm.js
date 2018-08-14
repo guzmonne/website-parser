@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Alert } from '../../../common/Alert/';
 import { Input } from '../../../common/Input/';
 import { ButtonLoading as Button } from '../../../common/Button/';
 
@@ -8,11 +9,14 @@ export var Confirm = ({
   handleChange,
   handleSubmit,
   loading,
-  setLoading
+  setLoading,
+  error,
+  awkError
 }) => (
   <div className="Confirm">
     <form className="Confirm__form" onSubmit={handleSubmit}>
       <legend onClick={setLoading}>Confirm</legend>
+      {error && <Alert message={error} type="danger" onClick={awkError} />}
       <label>Username</label>
       <Input
         placeholder="Username"

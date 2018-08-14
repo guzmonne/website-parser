@@ -4,17 +4,18 @@ import { concatMap, catchError } from 'rxjs/operators';
 import {
   LOGIN_SUCCESS,
   SIGNUP_SUCCESS,
+  CONFIRM_SUCCESS,
   ERROR,
   HISTORY_PUSH_REQUEST,
   CURRENT_USER_SUCCESS
 } from './actions.js';
 
-var handleError$ = () =>
+var handleError$ = key =>
   catchError(error =>
     of({
       type: ERROR,
       payload: {
-        key: 'login',
+        key,
         value: error
       }
     })
@@ -50,7 +51,7 @@ export var login$ = ({ username, password }) => {
         }
       ])
     ),
-    handleError$()
+    handleError$('login')
   );
 };
 
@@ -78,6 +79,26 @@ export var signup$ = ({ username, password, email }) => {
         }
       ])
     ),
-    handleError$()
+    handleError$('signup')
+  );
+};
+
+export var confirm$ = ({ username, code }) => {
+  return from(Auth.confirmSignUp(username, code)).pipe(
+    concatMap(data =>
+      from([
+        {
+          type: CONFIRM_SUCCESS,
+          payload: data
+        },
+        {
+          type: HISTORY_PUSH_REQUEST,
+          payload: {
+            href: '/app'
+          }
+        }
+      ])
+    ),
+    handleError$('confirmUser')
   );
 };

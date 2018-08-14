@@ -1,31 +1,38 @@
-import { Auth } from 'aws-amplify';
+import { connect } from 'react-redux';
 import compose from 'recompose/compose.js';
-import { withRouter } from 'react-router-dom';
+import withProps from 'recompose/withProps';
+import withError from '../../../common/recompose/withError.js';
 import withFormHandlers from '../../../common/recompose/withFormHandlers.js';
-import withLoading from '../../../common/recompose/withLoading.js';
 import { Confirm as ConfirmComponent } from './Confirm';
+import { CONFIRM_REQUEST } from '../../../state/';
 
 var enhance = compose(
-  withRouter,
-  withLoading,
+  withError('confirmUser'),
+  connect(
+    state => ({
+      loading: state.ui.loading
+    }),
+    {
+      confirmUser: payload => ({
+        type: CONFIRM_REQUEST,
+        payload
+      })
+    }
+  ),
+  withProps(({ confirmUser, awkError }) => ({
+    confirmUser: payload => {
+      awkError('confirmUser');
+      confirmUser(payload);
+    }
+  })),
   withFormHandlers(
     {
       username: '',
       code: ''
     },
-    (formState, { setLoading, history }) => {
+    (formState, { confirmUser }) => {
       if ((formState.code === '') | (formState.username === '')) return;
-
-      setLoading(true);
-
-      Auth.confirmSignUp(formState.username, formState.code)
-        .then(data => {
-          console.log(data);
-          history.push('/auth');
-        })
-        .then(err => {
-          console.log(err);
-        });
+      confirmUser(formState);
     }
   )
 );

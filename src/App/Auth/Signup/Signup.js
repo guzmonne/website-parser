@@ -1,12 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Alert } from '../../../common/Alert/';
 import { Input } from '../../../common/Input/';
 import { ButtonLoading as Button } from '../../../common/Button/';
 
-export var Signup = ({ formState, handleChange, handleSubmit, loading }) => (
+export var Signup = ({
+  formState,
+  handleChange,
+  handleSubmit,
+  loading,
+  error,
+  awkError
+}) => (
   <div className="Signup">
     <form className="Signup__form" onSubmit={handleSubmit}>
       <legend>Signup</legend>
+      {error && <Alert message={error} type="danger" onClick={awkError} />}
       <label>Username</label>
       <Input
         placeholder="Username"
