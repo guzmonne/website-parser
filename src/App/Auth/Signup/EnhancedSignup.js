@@ -1,11 +1,30 @@
-import { Auth } from 'aws-amplify';
+import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import withFormHandlers from '../../../common/recompose/withFormHandlers.js';
-import withLoading from '../../../common/recompose/withLoading.js';
+import withError from '../../../common/recompose/withError.js';
 import { Signup as SignupComponent } from './Signup.js';
+import withProps from 'recompose/withProps';
+import { SIGNUP_REQUEST } from '../../../state/';
 
 var enhance = compose(
-  withLoading,
+  withError('signup'),
+  connect(
+    state => ({
+      loading: state.ui.loading
+    }),
+    {
+      signup: payload => ({
+        type: SIGNUP_REQUEST,
+        payload
+      })
+    }
+  ),
+  withProps(({ signup, awkError }) => ({
+    signup: payload => {
+      awkError('signup');
+      signup(payload);
+    }
+  })),
   withFormHandlers(
     {
       username: '',
@@ -13,24 +32,9 @@ var enhance = compose(
       password: '',
       repeatPassword: ''
     },
-    (formState, { setLoading }) => {
+    (formState, { signup }) => {
       if (formState.password !== formState.repeatPassword) return;
-
-      setLoading(true);
-
-      Auth.signUp({
-        username: formState.username,
-        password: formState.password,
-        attributes: {
-          email: formState.email
-        }
-      })
-        .then(data => {
-          console.log(data);
-        })
-        .then(err => {
-          console.log(err);
-        });
+      signup(formState);
     }
   )
 );

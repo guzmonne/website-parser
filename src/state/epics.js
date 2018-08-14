@@ -6,11 +6,12 @@ import {
   APP_LOAD_REQUEST,
   APP_LOAD_SUCCESS,
   LOGIN_REQUEST,
+  SIGNUP_REQUEST,
   LOADING,
   HISTORY_PUSH_REQUEST,
   HISTORY_PUSH_SUCCESS
 } from './actions.js';
-import { login$, currentUser$ } from './observables.js';
+import { login$, currentUser$, signup$ } from './observables.js';
 
 var appLoadEpic = $action =>
   $action.pipe(
@@ -33,4 +34,10 @@ var loginEpic = $action =>
     concatMap(action => concat(of({ type: LOADING }), login$(action.payload)))
   );
 
-export default combineEpics(appLoadEpic, loginEpic, historyEpic);
+var signupEpic = $action =>
+  $action.pipe(
+    filter(action => action.type === SIGNUP_REQUEST),
+    concatMap(action => concat(of({ type: LOADING }), signup$(action.payload)))
+  );
+
+export default combineEpics(appLoadEpic, loginEpic, historyEpic, signupEpic);
