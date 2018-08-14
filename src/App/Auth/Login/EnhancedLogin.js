@@ -5,7 +5,7 @@ import withProps from 'recompose/withProps.js';
 import withFormHandlers from '../../../common/recompose/withFormHandlers.js';
 import withError from '../../../common/recompose/withError.js';
 import { Login as LoginComponent } from './Login.js';
-import { LOGIN_REQUEST } from '../../state/';
+import { LOGIN_REQUEST } from '../../../state/';
 
 var enhance = compose(
   withRouter,

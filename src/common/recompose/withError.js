@@ -1,6 +1,6 @@
 import get from 'lodash/get.js';
 import { connect } from 'react-redux';
-import { AWK_ERROR, ERROR } from '../../App/state/';
+import { AWK_ERROR, ERROR } from '../../state/';
 
 export default function(key) {
   return connect(

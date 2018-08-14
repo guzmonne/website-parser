@@ -1,3 +1,3 @@
 import './App.css';
 
-export * from './App';
+export * from './EnhancedApp.js';

@@ -1,7 +1,17 @@
 import { combineReducers } from 'redux';
-import { LOADING, AWK_ERROR, LOGIN_SUCCESS, ERROR } from './actions.js';
+import {
+  APP_LOAD_SUCCESS,
+  CURRENT_USER_SUCCESS,
+  LOADING,
+  AWK_ERROR,
+  LOGIN_SUCCESS,
+  ERROR
+} from './actions.js';
 
 var defaultState = {
+  app: {
+    ready: false
+  },
   ui: {
     loading: false
   },
@@ -9,6 +19,14 @@ var defaultState = {
     login: undefined
   },
   account: {}
+};
+
+var app = (state = defaultState.app, action) => {
+  console.log(action.type, state);
+
+  if (action.type === APP_LOAD_SUCCESS) return { ...state, ready: true };
+
+  return state;
 };
 
 var errors = (state = defaultState.errors, action) => {
@@ -46,9 +64,10 @@ var ui = (state = defaultState.ui, action) => {
 };
 
 var account = (state = defaultState.account, action) => {
-  if (action.type === LOGIN_SUCCESS) return { ...action.payload };
+  if (action.type === LOGIN_SUCCESS || action.type === CURRENT_USER_SUCCESS)
+    return { ...action.payload };
 
   return state;
 };
 
-export default combineReducers({ account, errors, ui });
+export default combineReducers({ app, account, errors, ui });
