@@ -1,3 +1,7 @@
+.Body .Body__url-label {
+  margin-left: 0.5em;
+}
+
 .Body .Body__url {
   width: 100%;
 }
