@@ -1,19 +1,23 @@
-import compose from 'recompose/compose.js';
-import withStateHandlers from 'recompose/withStateHandlers.js';
+import get from 'lodash/get.js';
+import { connect } from 'react-redux';
+import { AWK_ERROR, ERROR } from '../../App/state/';
 
-export default compose(
-  withStateHandlers(
-    () => ({
-      error: undefined
+export default function(key) {
+  return connect(
+    state => ({
+      error: get(state, `errors.${key}.message`)
     }),
     {
-      setError: () => error => {
-        console.error(error);
-        if (typeof error === 'string') return { error };
-        if (error && error.message) return { error: error.message };
-        return { error: undefined };
-      },
-      awkError: () => () => ({ error: undefined })
+      awkError: () => ({
+        type: AWK_ERROR,
+        payload: {
+          key
+        }
+      }),
+      setError: payload => ({
+        type: ERROR,
+        payload
+      })
     }
-  )
-);
+  );
+}

@@ -1,2 +1,12 @@
-export var PING = 'PING';
-export var PONG = 'PONG';
+// ERRORS
+export var ERROR = 'ERROR';
+export var AWK_ERROR = 'AWK_ERROR';
+// UI
+export var LOADING = 'LOADING';
+// AUTH
+export var LOGIN_REQUEST = 'LOGIN_REQUEST';
+export var LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export var CURRENT_USER = 'CURRENT_USER';
+// HISTORY
+export var HISTORY_PUSH_REQUEST = 'HISTORY_PUSH_REQUEST';
+export var HISTORY_PUSH_SUCCESS = 'HISTORY_PUSH_SUCCESS';

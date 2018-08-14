@@ -1,21 +1,54 @@
 import { combineReducers } from 'redux';
-import { PING, PONG } from './actions.js';
+import { LOADING, AWK_ERROR, LOGIN_SUCCESS, ERROR } from './actions.js';
 
-var ping = (state = { ping: 0, pong: 0 }, action) => {
+var defaultState = {
+  ui: {
+    loading: false
+  },
+  errors: {
+    login: undefined
+  },
+  account: {}
+};
+
+var errors = (state = defaultState.errors, action) => {
   switch (action.type) {
-    case PING:
+    case AWK_ERROR:
       return {
         ...state,
-        ping: state.ping + 1
+        [action.payload.key]: undefined
       };
-    case PONG:
+    case ERROR:
       return {
         ...state,
-        pong: state.pong + 1
+        [action.payload.key]: action.payload.value
       };
     default:
       return state;
   }
 };
 
-export default combineReducers({ ping });
+var ui = (state = defaultState.ui, action) => {
+  switch (action.type) {
+    case LOADING:
+      return {
+        ...state,
+        loading: !state.loading
+      };
+    case ERROR:
+      return {
+        ...state,
+        loading: false
+      };
+    default:
+      return state;
+  }
+};
+
+var account = (state = defaultState.account, action) => {
+  if (action.type === LOGIN_SUCCESS) return { ...action.payload };
+
+  return state;
+};
+
+export default combineReducers({ account, errors, ui });

@@ -1,7 +1,5 @@
 import Amplify from 'aws-amplify';
 
-console.log(process.env);
-
 Amplify.configure({
   Auth: {
     // REQUIRED - Amazon Cognito Region

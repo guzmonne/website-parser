@@ -1,35 +1,40 @@
-import { Auth } from 'aws-amplify';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import compose from 'recompose/compose';
+import withProps from 'recompose/withProps.js';
 import withFormHandlers from '../../../common/recompose/withFormHandlers.js';
-import withLoading from '../../../common/recompose/withLoading.js';
 import withError from '../../../common/recompose/withError.js';
 import { Login as LoginComponent } from './Login.js';
+import { LOGIN_REQUEST } from '../../state/';
 
 var enhance = compose(
   withRouter,
-  withLoading,
-  withError,
+  withError('login'),
+  connect(
+    state => ({
+      loading: state.ui.loading
+    }),
+    {
+      login: payload => ({
+        type: LOGIN_REQUEST,
+        payload
+      })
+    }
+  ),
+  withProps(({ login, awkError }) => ({
+    login: payload => {
+      awkError('login');
+      login(payload);
+    }
+  })),
   withFormHandlers(
     {
       username: '',
       password: ''
     },
-    ({ username, password }, { setLoading, setError, history, awkError }) => {
+    ({ username, password }, { login }) => {
       if (username === '' || password === '') return;
-
-      setLoading(true);
-      awkError();
-
-      Auth.signIn(username, password)
-        .then(data => {
-          console.log(data);
-          history.push('/app');
-        })
-        .catch(err => {
-          setError(err);
-          setLoading(false);
-        });
+      login({ username, password });
     }
   )
 );
