@@ -1,9 +1,15 @@
 import React from 'react';
 import { ButtonOutline } from '../../../common/Button/';
 
-export var Toolbar = ({ onSignOut }) => (
+export var Toolbar = ({ onSignOut, toggleLabel, label }) => (
   <div className="Toolbar">
     <h1>Website-Parser</h1>
-    <ButtonOutline onClick={onSignOut}>Cerrar sesión</ButtonOutline>
+    <ButtonOutline
+      onClick={onSignOut}
+      onMouseEnter={toggleLabel}
+      onMouseLeave={toggleLabel}
+    >
+      {label}
+    </ButtonOutline>
   </div>
 );

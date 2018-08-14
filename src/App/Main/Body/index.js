@@ -1,1 +1,1 @@
-export * from './Body.js';
+export * from './EnhancedBody.js';

@@ -22,8 +22,6 @@ var defaultState = {
 };
 
 var app = (state = defaultState.app, action) => {
-  console.log(action.type, state);
-
   if (action.type === APP_LOAD_SUCCESS) return { ...state, ready: true };
 
   return state;
