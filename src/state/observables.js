@@ -2,9 +2,11 @@ import { Auth } from 'aws-amplify';
 import { of, from } from 'rxjs';
 import { concatMap, catchError } from 'rxjs/operators';
 import {
+  LOADING,
   LOGIN_SUCCESS,
   SIGNUP_SUCCESS,
   CONFIRM_SUCCESS,
+  QUERY_SUCCESS,
   ERROR,
   HISTORY_PUSH_REQUEST,
   CURRENT_USER_SUCCESS
@@ -100,5 +102,31 @@ export var confirm$ = ({ username, code }) => {
       ])
     ),
     handleError$('confirmUser')
+  );
+};
+
+var query = url =>
+  fetch(`${process.env.REACT_APP_API}/parse?url=${window.encodeURI(url)}`).then(
+    response =>
+      response.json().then(json => {
+        if (response.ok === true) return json;
+        throw json;
+      })
+  );
+
+export var query$ = url => {
+  return from(query(url)).pipe(
+    concatMap(data =>
+      from([
+        {
+          type: QUERY_SUCCESS,
+          payload: data
+        },
+        {
+          type: LOADING
+        }
+      ])
+    ),
+    handleError$('query')
   );
 };

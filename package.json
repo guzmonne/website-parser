@@ -19,8 +19,8 @@
     "rxjs": "^6.2.2"
   },
   "scripts": {
-    "start": "source ./scripts/exports.sh && react-scripts start",
-    "build": "react-scripts build",
+    "start": "source ./scripts/exports.sh && REACT_APP_API=http://localhost:5000 react-scripts start",
+    "build": "source ./scripts/exports.sh && REACT_APP_API=http://wp-api.conapps.click react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

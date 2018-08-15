@@ -5,3 +5,29 @@
 .Body .Body__url {
   width: 100%;
 }
+
+.Body .Spinner,
+.Body .Spinner:before,
+.Body .Spinner:after {
+  border-top-color: var(--blue);
+}
+
+.Body .Body__Spinner {
+  margin: 2em 0;
+  display: flex;
+  justify-content: center;
+}
+
+.Body pre {
+  font-size: 0.6em;
+  margin-bottom: 0;
+  background-color: darkgrey;
+  border-radius: 0.2rem;
+  border: solid grey 0.05rem;
+  min-height: 5em;
+  padding: 1rem;
+}
+
+.Body .Body__results {
+  margin-top: 1rem;
+}

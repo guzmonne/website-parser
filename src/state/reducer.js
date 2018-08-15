@@ -6,6 +6,8 @@ import {
   HISTORY_PUSH_REQUEST,
   AWK_ERROR,
   LOGIN_SUCCESS,
+  QUERY_REQUEST,
+  QUERY_SUCCESS,
   ERROR
 } from './actions.js';
 
@@ -14,12 +16,14 @@ var defaultState = {
     ready: false
   },
   ui: {
-    loading: false
+    loading: false,
+    dirty: false
   },
   errors: {
     login: undefined
   },
-  account: {}
+  account: {},
+  results: {}
 };
 
 var app = (state = defaultState.app, action) => {
@@ -58,6 +62,11 @@ var ui = (state = defaultState.ui, action) => {
         ...state,
         loading: false
       };
+    case QUERY_REQUEST:
+      return {
+        ...state,
+        dirty: true
+      };
     default:
       return state;
   }
@@ -70,4 +79,12 @@ var account = (state = defaultState.account, action) => {
   return state;
 };
 
-export default combineReducers({ app, account, errors, ui });
+var results = (state = defaultState.results, action) => {
+  if (action.type === QUERY_REQUEST) return {};
+
+  if (action.type === QUERY_SUCCESS) return { ...action.payload };
+
+  return state;
+};
+
+export default combineReducers({ app, account, errors, ui, results });

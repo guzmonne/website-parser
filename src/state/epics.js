@@ -10,9 +10,16 @@ import {
   CONFIRM_REQUEST,
   LOADING,
   HISTORY_PUSH_REQUEST,
-  HISTORY_PUSH_SUCCESS
+  HISTORY_PUSH_SUCCESS,
+  QUERY_REQUEST
 } from './actions.js';
-import { login$, currentUser$, signup$, confirm$ } from './observables.js';
+import {
+  login$,
+  currentUser$,
+  signup$,
+  confirm$,
+  query$
+} from './observables.js';
 
 var appLoadEpic = $action =>
   $action.pipe(
@@ -47,10 +54,17 @@ var confirmEpic = $action =>
     concatMap(action => concat(of({ type: LOADING }), confirm$(action.payload)))
   );
 
+var queryEpic = $action =>
+  $action.pipe(
+    filter(action => action.type === QUERY_REQUEST),
+    concatMap(action => concat(of({ type: LOADING }), query$(action.payload)))
+  );
+
 export default combineEpics(
   appLoadEpic,
   loginEpic,
   historyEpic,
   signupEpic,
-  confirmEpic
+  confirmEpic,
+  queryEpic
 );
